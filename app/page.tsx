@@ -22,7 +22,7 @@ export default function Home() {
     "/neotvip-neon-poster.jpg",
     "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=80",
     "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=1800&q=80",
+    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=80",
   ];
 
   const heroMetinleri = [
@@ -262,6 +262,10 @@ export default function Home() {
             linear-gradient(90deg, transparent, rgba(248,216,107,0.08), transparent),
             #050505;
         }
+
+        .image-soft {
+          box-shadow: 0 30px 80px rgba(0,0,0,.45);
+        }
       `}</style>
 
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/88 backdrop-blur-xl">
@@ -455,6 +459,48 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#050505] px-4 py-16 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="relative min-h-[460px] overflow-hidden image-soft">
+            <img
+              src="/neotvip-stadium.jpg"
+              alt="Neotvip stadyum yayınları"
+              className="h-[460px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-9">
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-yellow-300">
+                Maç yayınları · Diziler · Filmler
+              </p>
+              <h2 className="mt-4 text-3xl font-black md:text-5xl">
+                Neotvip ile izleme keyfi daha güçlü
+              </h2>
+            </div>
+          </div>
+
+          <div className="relative min-h-[460px] overflow-hidden image-soft">
+            <img
+              src="/neotvip-neon-poster.jpg"
+              alt="Neotvip HD 4K yayın"
+              className="h-[460px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-cyan-200">
+                HD / 4K Yayın
+              </p>
+              <h3 className="mt-3 text-3xl font-black">
+                Hemen abone ol
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="neden-biz" className="dark-flow px-4 py-20 md:px-8">
         <motion.div
           variants={stagger}
@@ -539,7 +585,7 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.55 }}
-            className="relative min-h-[520px] overflow-hidden"
+            className="relative min-h-[520px] overflow-hidden image-soft"
           >
             <img
               src="/neotvip-neon-poster.jpg"
@@ -578,58 +624,79 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="mt-14 border-y border-white/10">
-            {paketler.map((paket) => (
-              <motion.div
-                key={paket.ad}
-                variants={fadeUp}
-                className="grid gap-7 border-b border-white/10 py-12 last:border-b-0 lg:grid-cols-[1fr_190px_1.25fr_190px] lg:items-center"
-              >
-                <div>
-                  <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300/80">
-                    {paket.etiket}
-                  </p>
+          <div className="mt-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div className="relative min-h-[620px] overflow-hidden image-soft">
+              <img
+                src="/neotvip-stadium.jpg"
+                alt="Neotvip paketler"
+                className="h-[620px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
+                  12 Aylık Paket 70€
+                </p>
+                <p className="mt-3 text-3xl font-black">
+                  Sınırsız Paket 200€
+                </p>
+              </div>
+            </div>
 
-                  <h3 className="mt-3 text-3xl font-black text-white md:text-4xl">
-                    {paket.ad}
-                  </h3>
-
-                  <p className="mt-4 text-base leading-7 text-white/55">
-                    {paket.detay}
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300/80">
-                    Fiyat
-                  </p>
-                  <p className="mt-3 text-5xl font-black text-yellow-200">
-                    {paket.fiyat}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  {paket.ozellikler.map((ozellik) => (
-                    <div
-                      key={ozellik}
-                      className="flex items-start gap-3 text-base font-semibold leading-7 text-white/65"
-                    >
-                      <span className="mt-0.5 text-yellow-300">✓</span>
-                      <span>{ozellik}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex justify-center rounded-full bg-[#1fc45b] px-7 py-4 text-center font-black text-white shadow-lg shadow-green-500/20"
+            <div className="border-y border-white/10">
+              {paketler.map((paket) => (
+                <motion.div
+                  key={paket.ad}
+                  variants={fadeUp}
+                  className="grid gap-7 border-b border-white/10 py-10 last:border-b-0 xl:grid-cols-[1fr_160px] xl:items-start"
                 >
-                  Detaylar
-                </a>
-              </motion.div>
-            ))}
+                  <div>
+                    <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300/80">
+                      {paket.etiket}
+                    </p>
+
+                    <h3 className="mt-3 text-3xl font-black text-white md:text-4xl">
+                      {paket.ad}
+                    </h3>
+
+                    <p className="mt-4 text-base leading-7 text-white/55">
+                      {paket.detay}
+                    </p>
+
+                    <div className="mt-6 space-y-3">
+                      {paket.ozellikler.map((ozellik) => (
+                        <div
+                          key={ozellik}
+                          className="flex items-start gap-3 text-base font-semibold leading-7 text-white/65"
+                        >
+                          <span className="mt-0.5 text-yellow-300">✓</span>
+                          <span>{ozellik}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300/80">
+                      Fiyat
+                    </p>
+                    <p className="mt-3 text-5xl font-black text-yellow-200">
+                      {paket.fiyat}
+                    </p>
+
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex justify-center rounded-full bg-[#1fc45b] px-7 py-4 text-center font-black text-white shadow-lg shadow-green-500/20"
+                    >
+                      Detaylar
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </section>
@@ -657,26 +724,68 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="mt-14 divide-y divide-white/10 border-y border-white/10">
-            {kategoriler.map((kategori, index) => (
-              <motion.div
-                key={kategori.ad}
-                variants={fadeUp}
-                className="grid gap-4 py-8 md:grid-cols-[90px_1fr_1.4fr] md:items-center"
-              >
-                <div className="text-3xl font-black text-yellow-300">
-                  {index + 1}
+          <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {kategoriler.map((kategori, index) => (
+                <motion.div
+                  key={kategori.ad}
+                  variants={fadeUp}
+                  className="grid gap-4 py-8 md:grid-cols-[90px_1fr_1.4fr] md:items-center"
+                >
+                  <div className="text-3xl font-black text-yellow-300">
+                    {index + 1}
+                  </div>
+
+                  <h3 className="text-2xl font-black text-white">
+                    {kategori.ad}
+                  </h3>
+
+                  <p className="text-lg font-semibold leading-8 text-white/55">
+                    {kategori.aciklama}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="grid gap-6">
+              <div className="relative min-h-[330px] overflow-hidden image-soft">
+                <img
+                  src="/neotvip-neon-poster.jpg"
+                  alt="Neotvip içerikler"
+                  className="h-[330px] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-sm font-black uppercase tracking-[0.25em] text-cyan-200">
+                    HD / 4K yayın
+                  </p>
+                  <p className="mt-2 text-2xl font-black">
+                    İnternetten izle
+                  </p>
                 </div>
+              </div>
 
-                <h3 className="text-2xl font-black text-white">
-                  {kategori.ad}
-                </h3>
-
-                <p className="text-lg font-semibold leading-8 text-white/55">
-                  {kategori.aciklama}
-                </p>
-              </motion.div>
-            ))}
+              <div className="relative min-h-[330px] overflow-hidden image-soft">
+                <img
+                  src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1200&q=80"
+                  alt="Sinema içerikleri"
+                  className="h-[330px] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
+                    Film · Dizi · VOD
+                  </p>
+                  <p className="mt-2 text-2xl font-black">
+                    Sıkılmayı unutun
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -732,25 +841,48 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.55 }}
-            className="relative min-h-[460px] overflow-hidden"
+            className="grid gap-6"
           >
-            <img
-              src="/neotvip-stadium.jpg"
-              alt="Neotvip cihaz uyumluluğu"
-              className="h-[460px] w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <div className="relative min-h-[300px] overflow-hidden image-soft">
+              <img
+                src="/neotvip-stadium.jpg"
+                alt="Neotvip cihaz uyumluluğu"
+                className="h-[300px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-              <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
-                Canlı yayın · 4K kalite · Her cihazda
-              </p>
-              <p className="mt-3 text-3xl font-black">
-                Telefon, tablet, bilgisayar ve TV
-              </p>
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
+                  Canlı yayın · 4K kalite · Her cihazda
+                </p>
+                <p className="mt-3 text-3xl font-black">
+                  Telefon, tablet, bilgisayar ve TV
+                </p>
+              </div>
+            </div>
+
+            <div className="relative min-h-[300px] overflow-hidden image-soft">
+              <img
+                src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80"
+                alt="Smart TV izleme"
+                className="h-[300px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
+                  Smart TV · Android · iOS
+                </p>
+                <p className="mt-3 text-3xl font-black">
+                  Her ekranda izleme keyfi
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -780,6 +912,30 @@ export default function Home() {
                 12 Aylık Paket 70€ ve Sınırsız Paket 200€ seçenekleriyle size en
                 uygun paketi seçebilirsiniz.
               </p>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="relative min-h-[320px] overflow-hidden image-soft md:col-span-2">
+              <img
+                src="/neotvip-stadium.jpg"
+                alt="Neotvip premium deneyim"
+                className="h-[320px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+            </div>
+
+            <div className="relative min-h-[320px] overflow-hidden image-soft">
+              <img
+                src="/neotvip-neon-poster.jpg"
+                alt="Neotvip yayın"
+                className="h-[320px] w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
             </div>
           </div>
         </div>
@@ -818,6 +974,25 @@ export default function Home() {
               >
                 {whatsappGorunen}
               </a>
+            </div>
+          </div>
+
+          <div className="mt-12 relative min-h-[360px] overflow-hidden image-soft">
+            <img
+              src="/neotvip-neon-poster.jpg"
+              alt="Neotvip iletişim"
+              className="h-[360px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-cyan-200">
+                Hemen abone ol
+              </p>
+              <h2 className="mt-4 text-3xl font-black md:text-5xl">
+                HD / 4K yayın keyfine başla
+              </h2>
             </div>
           </div>
         </motion.div>
