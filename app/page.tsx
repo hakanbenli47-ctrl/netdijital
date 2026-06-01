@@ -15,7 +15,11 @@ export default function Home() {
     whatsappMesaji
   )}`;
 
+  const logoResmi = "/images/neotvip-logo.jpeg";
+
   const heroResimleri = [
+    "/images/neotvip-stadium.jpeg",
+    "/images/neotvip-neon-poster.jpeg",
     "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=85",
     "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=85",
     "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85",
@@ -30,22 +34,34 @@ export default function Home() {
         "Neotvip ile 4K, Full HD, HD ve SD kalitede kesintisiz izleme keyfi.",
     },
     {
+      ust: "HD / 4K yayın, geriye sarım, internetten izle",
+      baslik: "HEMEN ABONE OL",
+      aciklama:
+        "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında premium IPTV deneyimi.",
+    },
+    {
       ust: "Spor, sinema, belgesel ve daha fazlası",
       baslik: "KESİNTİSİZ İZLEYİN",
       aciklama:
-        "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında sorunsuz kullanım.",
+        "Maç yayınları, diziler, filmler, çocuk içerikleri ve VOD arşivi tek yerde.",
     },
     {
       ust: "Hızlı sunucular, geniş içerik",
       baslik: "SIKILMAYI UNUTUN",
       aciklama:
-        "Film, dizi, spor, belgesel, çocuk ve VOD içerikleri tek yerde.",
+        "Film, dizi, spor, belgesel, çocuk ve ulusal kanallar her zaman yanında.",
     },
     {
       ust: "Premium IPTV deneyimi",
       baslik: "HER YERDE YANINDA",
       aciklama:
         "Evde, yolda, tatilde veya işte; istediğin cihazdan izleme özgürlüğü.",
+    },
+    {
+      ust: "Tüm cihazlarla uyumlu",
+      baslik: "DÜNYA ÇAPINDA YAYIN",
+      aciklama:
+        "Smart TV, Android, iOS, TV Box, tablet ve bilgisayar uyumluluğu.",
     },
   ];
 
@@ -61,30 +77,12 @@ export default function Home() {
   }, [heroResimleri.length]);
 
   const menuLinkleri = [
-    {
-      ad: "Ana Sayfa",
-      href: "#anasayfa",
-    },
-    {
-      ad: "Neden Biz",
-      href: "#neden-biz",
-    },
-    {
-      ad: "Paketlerimiz",
-      href: "#paketler",
-    },
-    {
-      ad: "Kanallar",
-      href: "#kanallar",
-    },
-    {
-      ad: "Cihazlar",
-      href: "#cihazlar",
-    },
-    {
-      ad: "İletişim",
-      href: "#iletisim",
-    },
+    { ad: "Ana Sayfa", href: "#anasayfa" },
+    { ad: "Neden Biz", href: "#neden-biz" },
+    { ad: "Paketlerimiz", href: "#paketler" },
+    { ad: "Kanallar", href: "#kanallar" },
+    { ad: "Cihazlar", href: "#cihazlar" },
+    { ad: "İletişim", href: "#iletisim" },
   ];
 
   const paketler = [
@@ -140,8 +138,9 @@ export default function Home() {
         "Smart TV, Android, iOS, TV Box, bilgisayar ve tablet uyumluluğu.",
     },
     {
-      baslik: "Kolay Kullanım",
-      aciklama: "Basit kurulum, sade kullanım ve hızlı erişim.",
+      baslik: "Geriye Sarım",
+      aciklama:
+        "Yayınları kaçırmayın, geriye sarım özelliğiyle izlemeye devam edin.",
     },
     {
       baslik: "7/24 Destek",
@@ -151,16 +150,16 @@ export default function Home() {
 
   const kategoriler = [
     {
-      ad: "Spor Kanalları",
+      ad: "Maç Yayınları",
       aciklama: "Futbol, basketbol, tenis ve birçok spor içeriği.",
     },
     {
-      ad: "Sinema Kanalları",
-      aciklama: "Aksiyon, macera, komedi, dram ve popüler film seçenekleri.",
+      ad: "Diziler",
+      aciklama: "Popüler diziler, yeni sezonlar ve geniş arşiv.",
     },
     {
-      ad: "Belgesel Kanalları",
-      aciklama: "Doğa, tarih, bilim, uzay ve keşif içerikleri.",
+      ad: "Filmler",
+      aciklama: "Aksiyon, macera, komedi, dram ve popüler film seçenekleri.",
     },
     {
       ad: "VOD Kanallar",
@@ -171,8 +170,8 @@ export default function Home() {
       aciklama: "Aile ve çocuklara uygun eğlenceli içerikler.",
     },
     {
-      ad: "Ulusal Kanallar",
-      aciklama: "Günlük yayınlar, haber, eğlence ve genel içerikler.",
+      ad: "Belgesel Kanalları",
+      aciklama: "Doğa, tarih, bilim, uzay ve keşif içerikleri.",
     },
   ];
 
@@ -188,22 +187,10 @@ export default function Home() {
   ];
 
   const istatistikler = [
-    {
-      sayi: "4K",
-      yazi: "Ultra HD kalite",
-    },
-    {
-      sayi: "7/24",
-      yazi: "WhatsApp destek",
-    },
-    {
-      sayi: "12 Ay",
-      yazi: "70€ paket",
-    },
-    {
-      sayi: "200€",
-      yazi: "Sınırsız paket",
-    },
+    { sayi: "HD / 4K", yazi: "Yüksek kalite" },
+    { sayi: "7/24", yazi: "WhatsApp destek" },
+    { sayi: "70€", yazi: "12 aylık paket" },
+    { sayi: "200€", yazi: "Sınırsız paket" },
   ];
 
   const fadeUp: Variants = {
@@ -300,25 +287,18 @@ export default function Home() {
         }
       `}</style>
 
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
           <a
             href="#anasayfa"
             onClick={menuTikla}
             className="flex items-center gap-3"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/40 bg-yellow-400/10 text-xl font-black text-yellow-200">
-              N
-            </div>
-
-            <div>
-              <p className="gold-text text-xl font-black tracking-wide">
-                NEOTVIP
-              </p>
-              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/45">
-                Premium IPTV
-              </p>
-            </div>
+            <img
+              src={logoResmi}
+              alt="Neotvip Logo"
+              className="h-12 w-[150px] object-contain md:h-14 md:w-[190px]"
+            />
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-semibold text-white/75 lg:flex">
@@ -423,8 +403,8 @@ export default function Home() {
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/45" />
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-7xl items-center px-4 py-16 md:px-8">
           <motion.div
@@ -542,6 +522,56 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section className="bg-[#050505] px-4 py-20 md:px-8">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
+              HD / 4K Yayın
+            </p>
+
+            <h2 className="mt-4 text-3xl font-black md:text-5xl">
+              Geriye sarım, internetten izle,{" "}
+              <span className="gold-text">dünya çapında yayın</span>
+            </h2>
+
+            <p className="mt-6 text-lg leading-8 text-white/60">
+              Neotvip ile maçlar, diziler, filmler ve canlı yayınlar her
+              cihazda daha net, daha hızlı ve daha keyifli.
+            </p>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-block rounded-full bg-[#1fc45b] px-8 py-4 font-black text-white"
+            >
+              Hemen Abone Ol
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7 }}
+            className="relative min-h-[520px] overflow-hidden"
+          >
+            <img
+              src="/images/neotvip-neon-poster.jpeg"
+              alt="Neotvip HD 4K yayın"
+              className="h-[520px] w-full object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          </motion.div>
+        </div>
+      </section>
+
       <section id="paketler" className="bg-[#050505] px-4 py-20 md:px-8">
         <motion.div
           variants={stagger}
@@ -636,8 +666,8 @@ export default function Home() {
             </p>
 
             <h2 className="mt-4 text-3xl font-black md:text-5xl">
-              Spor, sinema, belgesel ve{" "}
-              <span className="gold-text">daha fazlası</span>
+              Maç yayınları, diziler, filmler ve{" "}
+              <span className="gold-text">çocuk içerikleri</span>
             </h2>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
@@ -723,7 +753,7 @@ export default function Home() {
             className="relative min-h-[460px] overflow-hidden"
           >
             <img
-              src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=85"
+              src="/images/neotvip-stadium.jpeg"
               alt="Neotvip cihaz uyumluluğu"
               className="h-[460px] w-full object-cover"
             />
@@ -732,7 +762,7 @@ export default function Home() {
 
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
               <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
-                Android ve iOS uyumlu
+                Canlı yayın · 4K kalite · Her cihazda
               </p>
               <p className="mt-3 text-3xl font-black">
                 Telefon, tablet, bilgisayar ve TV
@@ -824,4 +854,3 @@ export default function Home() {
     </main>
   );
 }
-
