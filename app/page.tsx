@@ -20,6 +20,9 @@ export default function Home() {
   const heroResimleri = [
     "/neotvip-stadium.jpg",
     "/neotvip-neon-poster.jpg",
+    "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=80",
+    "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=80",
+    "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=1800&q=80",
   ];
 
   const heroMetinleri = [
@@ -35,15 +38,38 @@ export default function Home() {
       aciklama:
         "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında premium IPTV deneyimi.",
     },
+    {
+      ust: "Spor, sinema, belgesel ve daha fazlası",
+      baslik: "KESİNTİSİZ İZLEYİN",
+      aciklama:
+        "Maç yayınları, diziler, filmler, çocuk içerikleri ve VOD arşivi tek yerde.",
+    },
+    {
+      ust: "Tüm cihazlarla uyumlu",
+      baslik: "HER YERDE YANINDA",
+      aciklama:
+        "Smart TV, Android, iOS, TV Box, tablet ve bilgisayardan izleme özgürlüğü.",
+    },
+    {
+      ust: "Premium izleme deneyimi",
+      baslik: "SIKILMAYI UNUTUN",
+      aciklama:
+        "Film, dizi, spor, belgesel ve çocuk içerikleriyle dolu dolu yayın keyfi.",
+    },
   ];
 
   const [aktifHero, setAktifHero] = useState(0);
   const [mobilMenuAcik, setMobilMenuAcik] = useState(false);
 
   useEffect(() => {
+    heroResimleri.forEach((resim) => {
+      const img = new Image();
+      img.src = resim;
+    });
+
     const interval = setInterval(() => {
       setAktifHero((onceki) => (onceki + 1) % heroResimleri.length);
-    }, 5000);
+    }, 5200);
 
     return () => clearInterval(interval);
   }, [heroResimleri.length]);
@@ -238,17 +264,17 @@ export default function Home() {
         }
       `}</style>
 
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/88 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 md:px-8 md:py-3">
           <a
             href="#anasayfa"
             onClick={menuTikla}
-            className="flex items-center gap-3"
+            className="flex min-w-0 items-center"
           >
             <img
               src={logoResmi}
               alt="Neotvip Logo"
-              className="h-12 w-[150px] object-contain md:h-14 md:w-[190px]"
+              className="h-14 w-[190px] object-contain object-left md:h-16 md:w-[260px] lg:h-[70px] lg:w-[310px]"
               loading="eager"
               decoding="async"
             />
@@ -280,7 +306,7 @@ export default function Home() {
           <button
             type="button"
             onClick={() => setMobilMenuAcik((onceki) => !onceki)}
-            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-yellow-300/30 bg-black/40 lg:hidden"
+            className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.5 rounded-full border border-yellow-300/30 bg-black/40 lg:hidden"
             aria-label="Menüyü aç"
           >
             <span
@@ -336,7 +362,7 @@ export default function Home() {
 
       <section
         id="anasayfa"
-        className="relative min-h-screen overflow-hidden pt-24"
+        className="relative min-h-screen overflow-hidden pt-24 md:pt-28"
       >
         {heroResimleri.map((resim, index) => (
           <div
@@ -357,7 +383,7 @@ export default function Home() {
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/45" />
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-7xl items-center px-4 py-16 md:px-8">
