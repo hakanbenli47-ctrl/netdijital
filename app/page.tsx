@@ -8,7 +8,8 @@ export default function Home() {
   const whatsappNumarasi = "491634529127";
   const whatsappGorunen = "+49 163 4529127";
 
-  const whatsappMesaji = "Merhaba, Neotvip paketleri hakkında bilgi almak istiyorum.";
+  const whatsappMesaji =
+    "Merhaba, Neotvip paketleri hakkında bilgi almak istiyorum.";
 
   const whatsappLink = `https://wa.me/${whatsappNumarasi}?text=${encodeURIComponent(
     whatsappMesaji
@@ -25,26 +26,31 @@ export default function Home() {
     {
       ust: "Avrupa’nın en iyi fiyatlarıyla",
       baslik: "TAKILMA YOK, DONMA YOK",
-      aciklama: "Neotvip ile 4K, Full HD, HD ve SD kalitede kesintisiz izleme keyfi.",
+      aciklama:
+        "Neotvip ile 4K, Full HD, HD ve SD kalitede kesintisiz izleme keyfi.",
     },
     {
       ust: "Spor, sinema, belgesel ve daha fazlası",
       baslik: "KESİNTİSİZ İZLEYİN",
-      aciklama: "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında sorunsuz kullanım.",
+      aciklama:
+        "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında sorunsuz kullanım.",
     },
     {
       ust: "Hızlı sunucular, geniş içerik",
       baslik: "SIKILMAYI UNUTUN",
-      aciklama: "Film, dizi, spor, belgesel, çocuk ve VOD içerikleri tek yerde.",
+      aciklama:
+        "Film, dizi, spor, belgesel, çocuk ve VOD içerikleri tek yerde.",
     },
     {
       ust: "Premium IPTV deneyimi",
       baslik: "HER YERDE YANINDA",
-      aciklama: "Evde, yolda, tatilde veya işte; istediğin cihazdan izleme özgürlüğü.",
+      aciklama:
+        "Evde, yolda, tatilde veya işte; istediğin cihazdan izleme özgürlüğü.",
     },
   ];
 
   const [aktifHero, setAktifHero] = useState(0);
+  const [mobilMenuAcik, setMobilMenuAcik] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,6 +59,33 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [heroResimleri.length]);
+
+  const menuLinkleri = [
+    {
+      ad: "Ana Sayfa",
+      href: "#anasayfa",
+    },
+    {
+      ad: "Neden Biz",
+      href: "#neden-biz",
+    },
+    {
+      ad: "Paketlerimiz",
+      href: "#paketler",
+    },
+    {
+      ad: "Kanallar",
+      href: "#kanallar",
+    },
+    {
+      ad: "Cihazlar",
+      href: "#cihazlar",
+    },
+    {
+      ad: "İletişim",
+      href: "#iletisim",
+    },
+  ];
 
   const paketler = [
     {
@@ -90,7 +123,8 @@ export default function Home() {
   const ozellikler = [
     {
       baslik: "Yüksek HD Kalite",
-      aciklama: "4K, Full HD, HD ve SD kalite seçenekleriyle net görüntü deneyimi.",
+      aciklama:
+        "4K, Full HD, HD ve SD kalite seçenekleriyle net görüntü deneyimi.",
     },
     {
       baslik: "Hızlı Sunucular",
@@ -102,7 +136,8 @@ export default function Home() {
     },
     {
       baslik: "Tüm Cihazlarla Uyumlu",
-      aciklama: "Smart TV, Android, iOS, TV Box, bilgisayar ve tablet uyumluluğu.",
+      aciklama:
+        "Smart TV, Android, iOS, TV Box, bilgisayar ve tablet uyumluluğu.",
     },
     {
       baslik: "Kolay Kullanım",
@@ -195,6 +230,10 @@ export default function Home() {
     },
   };
 
+  const menuTikla = () => {
+    setMobilMenuAcik(false);
+  };
+
   return (
     <main className="min-h-screen bg-[#050505] text-white">
       <style>{`
@@ -263,7 +302,11 @@ export default function Home() {
 
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-          <a href="#anasayfa" className="flex items-center gap-3">
+          <a
+            href="#anasayfa"
+            onClick={menuTikla}
+            className="flex items-center gap-3"
+          >
             <div className="flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/40 bg-yellow-400/10 text-xl font-black text-yellow-200">
               N
             </div>
@@ -279,35 +322,83 @@ export default function Home() {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-semibold text-white/75 lg:flex">
-            <a href="#anasayfa" className="hover:text-yellow-200">
-              Ana Sayfa
-            </a>
-            <a href="#neden-biz" className="hover:text-yellow-200">
-              Neden Biz
-            </a>
-            <a href="#paketler" className="hover:text-yellow-200">
-              Paketlerimiz
-            </a>
-            <a href="#kanallar" className="hover:text-yellow-200">
-              Kanallar
-            </a>
-            <a href="#cihazlar" className="hover:text-yellow-200">
-              Cihazlar
-            </a>
-            <a href="#iletisim" className="hover:text-yellow-200">
-              İletişim
-            </a>
+            {menuLinkleri.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:text-yellow-200"
+              >
+                {link.ad}
+              </a>
+            ))}
           </nav>
 
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[#1fc45b] px-5 py-3 text-sm font-black text-white shadow-lg shadow-green-500/20"
+          <div className="hidden lg:block">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-[#1fc45b] px-5 py-3 text-sm font-black text-white shadow-lg shadow-green-500/20"
+            >
+              WhatsApp
+            </a>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobilMenuAcik((onceki) => !onceki)}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-yellow-300/30 bg-black/40 lg:hidden"
+            aria-label="Menüyü aç"
           >
-            WhatsApp
-          </a>
+            <span
+              className={`h-0.5 w-5 rounded-full bg-yellow-200 transition ${
+                mobilMenuAcik ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-5 rounded-full bg-yellow-200 transition ${
+                mobilMenuAcik ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`h-0.5 w-5 rounded-full bg-yellow-200 transition ${
+                mobilMenuAcik ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
+          </button>
         </div>
+
+        {mobilMenuAcik && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="border-t border-white/10 bg-black/95 px-4 py-5 lg:hidden"
+          >
+            <div className="mx-auto flex max-w-7xl flex-col">
+              {menuLinkleri.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={menuTikla}
+                  className="border-b border-white/10 py-4 text-base font-black text-white/85 last:border-b-0 hover:text-yellow-200"
+                >
+                  {link.ad}
+                </a>
+              ))}
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={menuTikla}
+                className="mt-5 rounded-full bg-[#1fc45b] px-6 py-4 text-center text-base font-black text-white shadow-lg shadow-green-500/20"
+              >
+                WhatsApp’tan Yaz
+              </a>
+            </div>
+          </motion.div>
+        )}
       </header>
 
       <section
@@ -423,7 +514,9 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
-              Neotvip; hızlı sunucular, geniş içerik seçenekleri, yüksek görüntü kalitesi ve tüm cihazlarla uyumlu yapısıyla kesintisiz izleme keyfi sunar.
+              Neotvip; hızlı sunucular, geniş içerik seçenekleri, yüksek görüntü
+              kalitesi ve tüm cihazlarla uyumlu yapısıyla kesintisiz izleme
+              keyfi sunar.
             </p>
           </motion.div>
 
@@ -468,7 +561,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
-              İster 12 aylık avantajlı paketi seçin, ister sınırsız paketle uzun vadeli premium deneyime geçin.
+              İster 12 aylık avantajlı paketi seçin, ister sınırsız paketle uzun
+              vadeli premium deneyime geçin.
             </p>
           </motion.div>
 
@@ -593,7 +687,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
-              Neotvip; Smart TV, Android, iOS, TV Box, bilgisayar ve tablet cihazlarla uyumlu çalışır.
+              Neotvip; Smart TV, Android, iOS, TV Box, bilgisayar ve tablet
+              cihazlarla uyumlu çalışır.
             </p>
 
             <div className="mt-10 divide-y divide-white/10 border-y border-white/10">
@@ -602,9 +697,7 @@ export default function Home() {
                   key={cihaz}
                   className="flex items-center justify-between gap-4 py-5"
                 >
-                  <span className="text-xl font-black text-white">
-                    {cihaz}
-                  </span>
+                  <span className="text-xl font-black text-white">{cihaz}</span>
                   <span className="text-right font-bold text-yellow-300">
                     Uyumlu
                   </span>
@@ -665,11 +758,13 @@ export default function Home() {
 
             <div className="space-y-5 text-lg leading-8 text-white/60">
               <p>
-                Neotvip ile spor karşılaşmaları, sinema keyfi, belgesel dünyası, çocuk içerikleri ve VOD seçenekleri tek akışta buluşur.
+                Neotvip ile spor karşılaşmaları, sinema keyfi, belgesel dünyası,
+                çocuk içerikleri ve VOD seçenekleri tek akışta buluşur.
               </p>
 
               <p>
-                12 Aylık Paket 70€ ve Sınırsız Paket 200€ seçenekleriyle size en uygun paketi seçebilirsiniz.
+                12 Aylık Paket 70€ ve Sınırsız Paket 200€ seçenekleriyle size en
+                uygun paketi seçebilirsiniz.
               </p>
             </div>
           </div>
