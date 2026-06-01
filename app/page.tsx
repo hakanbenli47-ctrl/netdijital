@@ -15,15 +15,11 @@ export default function Home() {
     whatsappMesaji
   )}`;
 
-  const logoResmi = "/images/neotvip-logo.jpeg";
+  const logoResmi = "/images/neotvip-logo.jpg";
 
   const heroResimleri = [
-    "/images/neotvip-stadium.jpeg",
-    "/images/neotvip-neon-poster.jpeg",
-    "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1800&q=85",
+    "/images/neotvip-stadium.jpg",
+    "/images/neotvip-neon-poster.jpg",
   ];
 
   const heroMetinleri = [
@@ -39,30 +35,6 @@ export default function Home() {
       aciklama:
         "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında premium IPTV deneyimi.",
     },
-    {
-      ust: "Spor, sinema, belgesel ve daha fazlası",
-      baslik: "KESİNTİSİZ İZLEYİN",
-      aciklama:
-        "Maç yayınları, diziler, filmler, çocuk içerikleri ve VOD arşivi tek yerde.",
-    },
-    {
-      ust: "Hızlı sunucular, geniş içerik",
-      baslik: "SIKILMAYI UNUTUN",
-      aciklama:
-        "Film, dizi, spor, belgesel, çocuk ve ulusal kanallar her zaman yanında.",
-    },
-    {
-      ust: "Premium IPTV deneyimi",
-      baslik: "HER YERDE YANINDA",
-      aciklama:
-        "Evde, yolda, tatilde veya işte; istediğin cihazdan izleme özgürlüğü.",
-    },
-    {
-      ust: "Tüm cihazlarla uyumlu",
-      baslik: "DÜNYA ÇAPINDA YAYIN",
-      aciklama:
-        "Smart TV, Android, iOS, TV Box, tablet ve bilgisayar uyumluluğu.",
-    },
   ];
 
   const [aktifHero, setAktifHero] = useState(0);
@@ -71,7 +43,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setAktifHero((onceki) => (onceki + 1) % heroResimleri.length);
-    }, 4500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [heroResimleri.length]);
@@ -196,13 +168,13 @@ export default function Home() {
   const fadeUp: Variants = {
     hidden: {
       opacity: 0,
-      y: 35,
+      y: 28,
     },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.55,
         ease: "easeOut",
       },
     },
@@ -212,7 +184,7 @@ export default function Home() {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.12,
+        staggerChildren: 0.08,
       },
     },
   };
@@ -230,7 +202,7 @@ export default function Home() {
 
         @keyframes heroZoom {
           0% { transform: scale(1); }
-          100% { transform: scale(1.12); }
+          100% { transform: scale(1.07); }
         }
 
         @keyframes goldMove {
@@ -239,55 +211,34 @@ export default function Home() {
           100% { background-position: 0% 50%; }
         }
 
-        @keyframes lineMove {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-
         .gold-text {
           background: linear-gradient(90deg, #f8d86b, #c99735, #fff1a8, #a66b18, #f8d86b);
-          background-size: 300% 300%;
+          background-size: 260% 260%;
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
-          animation: goldMove 5s ease infinite;
+          animation: goldMove 6s ease infinite;
         }
 
         .hero-active {
-          animation: heroZoom 8s linear forwards;
+          animation: heroZoom 9s linear forwards;
         }
 
         .dark-flow {
           background:
-            radial-gradient(circle at 15% 20%, rgba(201, 151, 53, 0.14), transparent 28%),
-            radial-gradient(circle at 85% 70%, rgba(132, 82, 20, 0.18), transparent 30%),
+            radial-gradient(circle at 15% 20%, rgba(201, 151, 53, 0.12), transparent 25%),
+            radial-gradient(circle at 85% 70%, rgba(132, 82, 20, 0.14), transparent 28%),
             #080808;
         }
 
         .line-flow {
           background:
-            linear-gradient(90deg, transparent, rgba(248,216,107,0.10), transparent),
+            linear-gradient(90deg, transparent, rgba(248,216,107,0.08), transparent),
             #050505;
-        }
-
-        .moving-line {
-          position: relative;
-          overflow: hidden;
-        }
-
-        .moving-line::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(248,216,107,.8), transparent);
-          animation: lineMove 5s linear infinite;
         }
       `}</style>
 
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-xl">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
           <a
             href="#anasayfa"
@@ -298,6 +249,8 @@ export default function Home() {
               src={logoResmi}
               alt="Neotvip Logo"
               className="h-12 w-[150px] object-contain md:h-14 md:w-[190px]"
+              loading="eager"
+              decoding="async"
             />
           </a>
 
@@ -352,7 +305,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.22 }}
             className="border-t border-white/10 bg-black/95 px-4 py-5 lg:hidden"
           >
             <div className="mx-auto flex max-w-7xl flex-col">
@@ -388,17 +341,18 @@ export default function Home() {
         {heroResimleri.map((resim, index) => (
           <div
             key={resim}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-700 ${
               aktifHero === index ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div
-              className={`h-full w-full bg-cover bg-center ${
+            <img
+              src={resim}
+              alt="Neotvip görsel"
+              className={`h-full w-full object-cover ${
                 aktifHero === index ? "hero-active" : ""
               }`}
-              style={{
-                backgroundImage: `url(${resim})`,
-              }}
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
             />
           </div>
         ))}
@@ -409,9 +363,9 @@ export default function Home() {
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-7xl items-center px-4 py-16 md:px-8">
           <motion.div
             key={aktifHero}
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
+            transition={{ duration: 0.5 }}
             className="max-w-5xl"
           >
             <p className="mb-5 border-l-4 border-yellow-300 pl-5 text-sm font-black uppercase tracking-[0.25em] text-yellow-200 md:text-base">
@@ -505,7 +459,7 @@ export default function Home() {
               <motion.div
                 key={item.baslik}
                 variants={fadeUp}
-                className="moving-line grid gap-5 py-8 md:grid-cols-[90px_1fr_1.4fr] md:items-center"
+                className="grid gap-5 py-8 md:grid-cols-[90px_1fr_1.4fr] md:items-center"
               >
                 <div className="text-4xl font-black text-yellow-300">
                   0{index + 1}
@@ -525,10 +479,10 @@ export default function Home() {
       <section className="bg-[#050505] px-4 py-20 md:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.55 }}
           >
             <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
               HD / 4K Yayın
@@ -555,16 +509,18 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 35 }}
+            initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.55 }}
             className="relative min-h-[520px] overflow-hidden"
           >
             <img
-              src="/images/neotvip-neon-poster.jpeg"
+              src="/images/neotvip-neon-poster.jpg"
               alt="Neotvip HD 4K yayın"
               className="h-[520px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -702,10 +658,10 @@ export default function Home() {
       <section id="cihazlar" className="dark-flow px-4 py-20 md:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.55 }}
           >
             <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
               Platformlar
@@ -746,16 +702,18 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 35 }}
+            initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.55 }}
             className="relative min-h-[460px] overflow-hidden"
           >
             <img
-              src="/images/neotvip-stadium.jpeg"
+              src="/images/neotvip-stadium.jpg"
               alt="Neotvip cihaz uyumluluğu"
               className="h-[460px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
@@ -803,10 +761,10 @@ export default function Home() {
 
       <section id="iletisim" className="dark-flow px-4 py-20 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.55 }}
           className="mx-auto max-w-7xl"
         >
           <div className="grid gap-10 border-y border-white/10 py-14 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
