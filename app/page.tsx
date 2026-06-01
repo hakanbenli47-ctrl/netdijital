@@ -15,11 +15,11 @@ export default function Home() {
     whatsappMesaji
   )}`;
 
-  const logoResmi = "/images/neotvip-logo.jpg";
+  const logoResmi = "/neotvip-logo.jpg";
 
   const heroResimleri = [
-    "/images/neotvip-stadium.jpg",
-    "/images/neotvip-neon-poster.jpg",
+    "/neotvip-stadium.jpg",
+    "/neotvip-neon-poster.jpg",
   ];
 
   const heroMetinleri = [
@@ -516,7 +516,7 @@ export default function Home() {
             className="relative min-h-[520px] overflow-hidden"
           >
             <img
-              src="/images/neotvip-neon-poster.jpg"
+              src="/neotvip-neon-poster.jpg"
               alt="Neotvip HD 4K yayın"
               className="h-[520px] w-full object-cover"
               loading="lazy"
@@ -709,7 +709,7 @@ export default function Home() {
             className="relative min-h-[460px] overflow-hidden"
           >
             <img
-              src="/images/neotvip-stadium.jpg"
+              src="/neotvip-stadium.jpg"
               alt="Neotvip cihaz uyumluluğu"
               className="h-[460px] w-full object-cover"
               loading="lazy"
