@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://neotvip.com";
+const siteUrl = "https://www.neotvip.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
