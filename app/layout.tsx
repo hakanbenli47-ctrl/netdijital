@@ -36,6 +36,10 @@ export const metadata: Metadata = {
   creator: "Neotvip",
   publisher: "Neotvip",
 
+  verification: {
+    google: "PLtDF2dRmTppdov5SIQE5MKNmVjzrmGh-yEpp7UzYko",
+  },
+
   alternates: {
     canonical: siteUrl,
   },
