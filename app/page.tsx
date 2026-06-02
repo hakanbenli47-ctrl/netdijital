@@ -4,60 +4,204 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
+const whatsappNumarasi = "491634529127";
+const whatsappGorunen = "+49 163 4529127";
+
+const whatsappMesaji =
+  "Merhaba, Neotvip paketleri hakkında bilgi almak istiyorum.";
+
+const whatsappLink = `https://wa.me/${whatsappNumarasi}?text=${encodeURIComponent(
+  whatsappMesaji
+)}`;
+
+const logoResmi = "/neotvip-logo.jpg";
+
+const heroResimleri = [
+  "/neotvip-stadium.jpg",
+  "/neotvip-neon-poster.jpg",
+  "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=80",
+  "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=80",
+  "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=80",
+];
+
+const heroMetinleri = [
+  {
+    ust: "Avrupa’nın en iyi fiyatlarıyla",
+    baslik: "TAKILMA YOK, DONMA YOK",
+    aciklama:
+      "Neotvip ile 4K, Full HD, HD ve SD kalitede güçlü IPTV izleme deneyimi.",
+  },
+  {
+    ust: "HD / 4K yayın, geriye sarım, internetten izle",
+    baslik: "HEMEN ABONE OL",
+    aciklama:
+      "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında premium IPTV keyfi.",
+  },
+  {
+    ust: "Spor, sinema, belgesel ve daha fazlası",
+    baslik: "KESİNTİSİZ İZLEYİN",
+    aciklama:
+      "Maç yayınları, diziler, filmler, çocuk içerikleri ve VOD arşivi tek yerde.",
+  },
+  {
+    ust: "Tüm cihazlarla uyumlu",
+    baslik: "HER YERDE YANINDA",
+    aciklama:
+      "Smart TV, Android, iOS, TV Box, tablet ve bilgisayardan izleme özgürlüğü.",
+  },
+  {
+    ust: "Premium izleme deneyimi",
+    baslik: "SIKILMAYI UNUTUN",
+    aciklama:
+      "Film, dizi, spor, belgesel ve çocuk içerikleriyle dolu dolu yayın keyfi.",
+  },
+];
+
+const menuLinkleri = [
+  { ad: "Ana Sayfa", href: "#anasayfa" },
+  { ad: "Neden Biz", href: "#neden-biz" },
+  { ad: "Paketler", href: "#paketler" },
+  { ad: "İçerikler", href: "#kanallar" },
+  { ad: "Cihazlar", href: "#cihazlar" },
+  { ad: "İletişim", href: "#iletisim" },
+];
+
+const paketler = [
+  {
+    ad: "12 Aylık Paket",
+    fiyat: "70€",
+    etiket: "En Çok Tercih Edilen",
+    detay:
+      "12 ay boyunca premium IPTV keyfi. Spor, sinema, belgesel, çocuk, ulusal ve VOD içerikleriyle dolu dolu izleme deneyimi.",
+    ozellikler: [
+      "4K, Full HD, HD ve SD kalite",
+      "Android ve iOS uyumlu",
+      "Smart TV, TV Box, telefon, tablet ve bilgisayar",
+      "Spor, sinema, belgesel ve VOD içerikleri",
+      "Hızlı sunucu altyapısı",
+      "WhatsApp destek",
+    ],
+  },
+  {
+    ad: "Sınırsız Paket",
+    fiyat: "200€",
+    etiket: "Tek Seferlik Premium Seçim",
+    detay:
+      "Uzun vadeli kullanım isteyenler için sınırsız paket. Tek seferlik ödeme ile Neotvip deneyimini kalıcı hale getirin.",
+    ozellikler: [
+      "Sınırsız kullanım seçeneği",
+      "4K, Full HD, HD ve SD kalite",
+      "Tüm cihazlarla uyumlu kullanım",
+      "Geniş kanal ve VOD seçenekleri",
+      "Hızlı ve stabil sunucular",
+      "Öncelikli WhatsApp destek",
+    ],
+  },
+];
+
+const ozellikler = [
+  {
+    baslik: "Yüksek HD Kalite",
+    aciklama:
+      "4K, Full HD, HD ve SD kalite seçenekleriyle net görüntü deneyimi.",
+  },
+  {
+    baslik: "Hızlı Sunucular",
+    aciklama:
+      "Güçlü altyapı ile daha stabil, daha hızlı ve daha keyifli yayın akışı.",
+  },
+  {
+    baslik: "Geniş İçerik",
+    aciklama:
+      "Spor, sinema, belgesel, çocuk, ulusal yayınlar ve VOD içerikleri.",
+  },
+  {
+    baslik: "Tüm Cihazlarla Uyumlu",
+    aciklama:
+      "Smart TV, Android, iOS, TV Box, bilgisayar ve tablet uyumluluğu.",
+  },
+  {
+    baslik: "Geriye Sarım",
+    aciklama:
+      "Yayınları kaçırdığınızda geriye sarım özelliğiyle izlemeye devam edin.",
+  },
+  {
+    baslik: "WhatsApp Destek",
+    aciklama:
+      "Kurulum ve paket bilgisi için WhatsApp üzerinden hızlı destek alın.",
+  },
+];
+
+const kategoriler = [
+  {
+    ad: "Maç Yayınları",
+    aciklama: "Futbol, basketbol, tenis ve birçok spor içeriği.",
+  },
+  {
+    ad: "Diziler",
+    aciklama: "Popüler diziler, yeni sezonlar ve geniş arşiv.",
+  },
+  {
+    ad: "Filmler",
+    aciklama: "Aksiyon, macera, komedi, dram ve popüler film seçenekleri.",
+  },
+  {
+    ad: "VOD Kanallar",
+    aciklama: "Film ve dizi arşiviyle istediğiniz zaman izleme keyfi.",
+  },
+  {
+    ad: "Çocuk Kanalları",
+    aciklama: "Aile ve çocuklara uygun eğlenceli içerikler.",
+  },
+  {
+    ad: "Belgesel Kanalları",
+    aciklama: "Doğa, tarih, bilim, uzay ve keşif içerikleri.",
+  },
+];
+
+const cihazlar = [
+  "Smart TV",
+  "Android Telefon",
+  "iPhone / iPad",
+  "TV Box",
+  "Bilgisayar",
+  "Tablet",
+  "Android TV",
+  "Fire Stick",
+];
+
+const istatistikler = [
+  { sayi: "HD / 4K", yazi: "Yüksek kalite" },
+  { sayi: "7/24", yazi: "WhatsApp destek" },
+  { sayi: "70€", yazi: "12 aylık paket" },
+  { sayi: "200€", yazi: "sınırsız paket" },
+];
+
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: "easeOut",
+    },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
 export default function Home() {
-  const whatsappNumarasi = "491634529127";
-  const whatsappGorunen = "+49 163 4529127";
-
-  const whatsappMesaji =
-    "Merhaba, Neotvip paketleri hakkında bilgi almak istiyorum.";
-
-  const whatsappLink = `https://wa.me/${whatsappNumarasi}?text=${encodeURIComponent(
-    whatsappMesaji
-  )}`;
-
-  const logoResmi = "/neotvip-logo.jpg";
-
-  const heroResimleri = [
-    "/neotvip-stadium.jpg",
-    "/neotvip-neon-poster.jpg",
-    "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=80",
-  ];
-
-  const heroMetinleri = [
-    {
-      ust: "Avrupa’nın en iyi fiyatlarıyla",
-      baslik: "TAKILMA YOK, DONMA YOK",
-      aciklama:
-        "Neotvip ile 4K, Full HD, HD ve SD kalitede kesintisiz izleme keyfi.",
-    },
-    {
-      ust: "HD / 4K yayın, geriye sarım, internetten izle",
-      baslik: "HEMEN ABONE OL",
-      aciklama:
-        "Telefon, tablet, bilgisayar, Smart TV ve TV Box cihazlarında premium IPTV deneyimi.",
-    },
-    {
-      ust: "Spor, sinema, belgesel ve daha fazlası",
-      baslik: "KESİNTİSİZ İZLEYİN",
-      aciklama:
-        "Maç yayınları, diziler, filmler, çocuk içerikleri ve VOD arşivi tek yerde.",
-    },
-    {
-      ust: "Tüm cihazlarla uyumlu",
-      baslik: "HER YERDE YANINDA",
-      aciklama:
-        "Smart TV, Android, iOS, TV Box, tablet ve bilgisayardan izleme özgürlüğü.",
-    },
-    {
-      ust: "Premium izleme deneyimi",
-      baslik: "SIKILMAYI UNUTUN",
-      aciklama:
-        "Film, dizi, spor, belgesel ve çocuk içerikleriyle dolu dolu yayın keyfi.",
-    },
-  ];
-
   const [aktifHero, setAktifHero] = useState(0);
   const [mobilMenuAcik, setMobilMenuAcik] = useState(false);
 
@@ -72,148 +216,7 @@ export default function Home() {
     }, 5200);
 
     return () => clearInterval(interval);
-  }, [heroResimleri.length]);
-
-  const menuLinkleri = [
-    { ad: "Ana Sayfa", href: "#anasayfa" },
-    { ad: "Neden Biz", href: "#neden-biz" },
-    { ad: "Paketlerimiz", href: "#paketler" },
-    { ad: "Kanallar", href: "#kanallar" },
-    { ad: "Cihazlar", href: "#cihazlar" },
-    { ad: "İletişim", href: "#iletisim" },
-  ];
-
-  const paketler = [
-    {
-      ad: "12 Aylık Paket",
-      fiyat: "70€",
-      etiket: "En Çok Tercih Edilen",
-      detay:
-        "12 ay boyunca premium IPTV keyfi. Spor, sinema, belgesel, çocuk, ulusal ve VOD içerikleriyle dolu dolu izleme deneyimi.",
-      ozellikler: [
-        "4K, Full HD, HD ve SD kalite",
-        "Android ve iOS uyumlu",
-        "Smart TV, TV Box, telefon, tablet ve bilgisayar",
-        "Spor, sinema, belgesel ve VOD içerikleri",
-        "Hızlı sunucu altyapısı",
-        "WhatsApp destek",
-      ],
-    },
-    {
-      ad: "Sınırsız Paket",
-      fiyat: "200€",
-      etiket: "Tek Seferlik Premium Seçim",
-      detay:
-        "Uzun vadeli kullanım isteyenler için sınırsız paket. Tek seferlik ödeme ile Neotvip deneyimini kalıcı hale getirin.",
-      ozellikler: [
-        "Sınırsız kullanım seçeneği",
-        "4K, Full HD, HD ve SD kalite",
-        "Tüm cihazlarla uyumlu kullanım",
-        "Geniş kanal ve VOD seçenekleri",
-        "Hızlı ve stabil sunucular",
-        "Öncelikli WhatsApp destek",
-      ],
-    },
-  ];
-
-  const ozellikler = [
-    {
-      baslik: "Yüksek HD Kalite",
-      aciklama:
-        "4K, Full HD, HD ve SD kalite seçenekleriyle net görüntü deneyimi.",
-    },
-    {
-      baslik: "Hızlı Sunucular",
-      aciklama: "Takılma yok, donma yok; hızlı ve stabil IPTV keyfi.",
-    },
-    {
-      baslik: "Geniş İçerik",
-      aciklama: "Spor, sinema, belgesel, çocuk, ulusal ve VOD içerikleri.",
-    },
-    {
-      baslik: "Tüm Cihazlarla Uyumlu",
-      aciklama:
-        "Smart TV, Android, iOS, TV Box, bilgisayar ve tablet uyumluluğu.",
-    },
-    {
-      baslik: "Geriye Sarım",
-      aciklama:
-        "Yayınları kaçırmayın, geriye sarım özelliğiyle izlemeye devam edin.",
-    },
-    {
-      baslik: "7/24 Destek",
-      aciklama: "WhatsApp üzerinden hızlı müşteri hizmetleri.",
-    },
-  ];
-
-  const kategoriler = [
-    {
-      ad: "Maç Yayınları",
-      aciklama: "Futbol, basketbol, tenis ve birçok spor içeriği.",
-    },
-    {
-      ad: "Diziler",
-      aciklama: "Popüler diziler, yeni sezonlar ve geniş arşiv.",
-    },
-    {
-      ad: "Filmler",
-      aciklama: "Aksiyon, macera, komedi, dram ve popüler film seçenekleri.",
-    },
-    {
-      ad: "VOD Kanallar",
-      aciklama: "Film ve dizi arşiviyle istediğiniz zaman izleme keyfi.",
-    },
-    {
-      ad: "Çocuk Kanalları",
-      aciklama: "Aile ve çocuklara uygun eğlenceli içerikler.",
-    },
-    {
-      ad: "Belgesel Kanalları",
-      aciklama: "Doğa, tarih, bilim, uzay ve keşif içerikleri.",
-    },
-  ];
-
-  const cihazlar = [
-    "Smart TV",
-    "Android Telefon",
-    "iPhone / iPad",
-    "TV Box",
-    "Bilgisayar",
-    "Tablet",
-    "Android TV",
-    "Fire Stick",
-  ];
-
-  const istatistikler = [
-    { sayi: "HD / 4K", yazi: "Yüksek kalite" },
-    { sayi: "7/24", yazi: "WhatsApp destek" },
-    { sayi: "70€", yazi: "12 aylık paket" },
-    { sayi: "200€", yazi: "Sınırsız paket" },
-  ];
-
-  const fadeUp: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 28,
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.55,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const stagger: Variants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
+  }, []);
 
   const menuTikla = () => {
     setMobilMenuAcik(false);
@@ -268,7 +271,7 @@ export default function Home() {
         }
       `}</style>
 
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/88 backdrop-blur-xl">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 md:px-8 md:py-3">
           <a
             href="#anasayfa"
@@ -289,23 +292,21 @@ export default function Home() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-yellow-200"
+                className="transition hover:text-yellow-200"
               >
                 {link.ad}
               </a>
             ))}
           </nav>
 
-          <div className="hidden lg:block">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#1fc45b] px-5 py-3 text-sm font-black text-white shadow-lg shadow-green-500/20"
-            >
-              WhatsApp
-            </a>
-          </div>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-full bg-[#1fc45b] px-5 py-3 text-sm font-black text-white shadow-lg shadow-green-500/20 lg:block"
+          >
+            WhatsApp
+          </a>
 
           <button
             type="button"
@@ -377,7 +378,7 @@ export default function Home() {
           >
             <img
               src={resim}
-              alt="Neotvip görsel"
+              alt="Neotvip IPTV yayın görseli"
               className={`h-full w-full object-cover ${
                 aktifHero === index ? "hero-active" : ""
               }`}
@@ -417,12 +418,12 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="rounded-full bg-[#1fc45b] px-8 py-4 text-center text-base font-black text-white shadow-2xl shadow-green-500/20"
               >
-                Bize Hemen Ulaş
+                Hemen Bilgi Al
               </a>
 
               <a
                 href="#paketler"
-                className="rounded-full border border-yellow-300/40 bg-black/35 px-8 py-4 text-center text-base font-black text-yellow-100 backdrop-blur hover:bg-yellow-300 hover:text-black"
+                className="rounded-full border border-yellow-300/40 bg-black/35 px-8 py-4 text-center text-base font-black text-yellow-100 backdrop-blur transition hover:bg-yellow-300 hover:text-black"
               >
                 Paketleri İncele
               </a>
@@ -464,7 +465,7 @@ export default function Home() {
           <div className="relative min-h-[460px] overflow-hidden image-soft">
             <img
               src="/neotvip-stadium.jpg"
-              alt="Neotvip stadyum yayınları"
+              alt="Neotvip maç yayınları"
               className="h-[460px] w-full object-cover"
               loading="lazy"
               decoding="async"
@@ -493,9 +494,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.25em] text-cyan-200">
                 HD / 4K Yayın
               </p>
-              <h3 className="mt-3 text-3xl font-black">
-                Hemen abone ol
-              </h3>
+              <h3 className="mt-3 text-3xl font-black">Hemen abone ol</h3>
             </div>
           </div>
         </div>
@@ -521,8 +520,8 @@ export default function Home() {
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
               Neotvip; hızlı sunucular, geniş içerik seçenekleri, yüksek görüntü
-              kalitesi ve tüm cihazlarla uyumlu yapısıyla kesintisiz izleme
-              keyfi sunar.
+              kalitesi ve tüm cihazlarla uyumlu yapısıyla daha güçlü bir izleme
+              deneyimi sunar.
             </p>
           </motion.div>
 
@@ -546,58 +545,6 @@ export default function Home() {
             ))}
           </div>
         </motion.div>
-      </section>
-
-      <section className="bg-[#050505] px-4 py-20 md:px-8">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55 }}
-          >
-            <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
-              HD / 4K Yayın
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black md:text-5xl">
-              Geriye sarım, internetten izle,{" "}
-              <span className="gold-text">dünya çapında yayın</span>
-            </h2>
-
-            <p className="mt-6 text-lg leading-8 text-white/60">
-              Neotvip ile maçlar, diziler, filmler ve canlı yayınlar her
-              cihazda daha net, daha hızlı ve daha keyifli.
-            </p>
-
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-block rounded-full bg-[#1fc45b] px-8 py-4 font-black text-white"
-            >
-              Hemen Abone Ol
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55 }}
-            className="relative min-h-[520px] overflow-hidden image-soft"
-          >
-            <img
-              src="/neotvip-neon-poster.jpg"
-              alt="Neotvip HD 4K yayın"
-              className="h-[520px] w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-          </motion.div>
-        </div>
       </section>
 
       <section id="paketler" className="bg-[#050505] px-4 py-20 md:px-8">
@@ -681,6 +628,7 @@ export default function Home() {
                     <p className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300/80">
                       Fiyat
                     </p>
+
                     <p className="mt-3 text-5xl font-black text-yellow-200">
                       {paket.fiyat}
                     </p>
@@ -691,7 +639,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="mt-6 inline-flex justify-center rounded-full bg-[#1fc45b] px-7 py-4 text-center font-black text-white shadow-lg shadow-green-500/20"
                     >
-                      Detaylar
+                      Detay Al
                     </a>
                   </div>
                 </motion.div>
@@ -720,7 +668,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/60">
-              Neotvip ile her zevke uygun içerikler tek yerde.
+              Neotvip ile farklı zevklere uygun içerikler tek yerde toplanır.
             </p>
           </motion.div>
 
@@ -761,9 +709,7 @@ export default function Home() {
                   <p className="text-sm font-black uppercase tracking-[0.25em] text-cyan-200">
                     HD / 4K yayın
                   </p>
-                  <p className="mt-2 text-2xl font-black">
-                    İnternetten izle
-                  </p>
+                  <p className="mt-2 text-2xl font-black">İnternetten izle</p>
                 </div>
               </div>
 
@@ -888,59 +834,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#050505] px-4 py-20 md:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 border-y border-white/10 py-14 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.35em] text-yellow-300">
-                Premium Deneyim
-              </p>
-
-              <h2 className="mt-4 text-3xl font-black md:text-5xl">
-                Takılmadan, donmadan,{" "}
-                <span className="gold-text">kesintisiz izleyin</span>
-              </h2>
-            </div>
-
-            <div className="space-y-5 text-lg leading-8 text-white/60">
-              <p>
-                Neotvip ile spor karşılaşmaları, sinema keyfi, belgesel dünyası,
-                çocuk içerikleri ve VOD seçenekleri tek akışta buluşur.
-              </p>
-
-              <p>
-                12 Aylık Paket 70€ ve Sınırsız Paket 200€ seçenekleriyle size en
-                uygun paketi seçebilirsiniz.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="relative min-h-[320px] overflow-hidden image-soft md:col-span-2">
-              <img
-                src="/neotvip-stadium.jpg"
-                alt="Neotvip premium deneyim"
-                className="h-[320px] w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-            </div>
-
-            <div className="relative min-h-[320px] overflow-hidden image-soft">
-              <img
-                src="/neotvip-neon-poster.jpg"
-                alt="Neotvip yayın"
-                className="h-[320px] w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="iletisim" className="dark-flow px-4 py-20 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -999,7 +892,8 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-white/10 bg-black px-4 py-8 text-center text-sm leading-7 text-white/45 md:px-8">
-        <p>© COPYRIGHT 2026 - NEOTVIP</p>
+        <p>© 2026 NEOTVIP</p>
+        <p className="mt-1">neotvip.com</p>
       </footer>
 
       <a
