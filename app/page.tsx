@@ -410,7 +410,14 @@ export default function Home() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
               {heroMetinleri[aktifHero].aciklama}
             </p>
-
+<div className="mt-6 inline-flex max-w-2xl flex-col gap-2 border-l-4 border-yellow-300 bg-black/45 px-5 py-4 backdrop-blur md:flex-row md:items-center md:gap-4">
+  <span className="text-sm font-black uppercase tracking-[0.25em] text-yellow-300">
+    Bayilik Verilir
+  </span>
+  <span className="text-base font-semibold leading-7 text-white/75">
+    Yayın satışı yapmak isteyenler için Avrupa genelinde bayilik fırsatı.
+  </span>
+</div>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <a
                 href={whatsappLink}
